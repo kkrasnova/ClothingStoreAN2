@@ -1,8 +1,15 @@
+using ClothingStoreAN2.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 //Test
+builder.Services.AddDbContext<ClothingStoreAN2Context>(option => option.UseSqlServer(
+    builder.Configuration.GetConnectionString("DefaultConnection")
+    ));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
